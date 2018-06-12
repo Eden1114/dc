@@ -33,7 +33,9 @@ function Controller() {
   
     if(origin != null && destination != null) {
       var url = baidumapAPI.citytocity(origin, destination);
-      response.output.text += '<a target="_blank" href="' + url +'">路线</a>';
+      var weaherCondition = weatherAPI.getWeatherCondition(destination); 
+      response.output.text += '<a target="_blank" href="' + url +'">路线</a>\n';
+      response.output.text += weaherCondition; 
     }
   }
 
