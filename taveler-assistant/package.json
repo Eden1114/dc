@@ -22,6 +22,7 @@
     "body-parser": "^1.18.2",
     "dotenv": "^2.0.0",
     "express": "^4.16.1",
+    "showapi-sdk": "^1.0.4",
     "watson-developer-cloud": "^3.2.1"
   },
   "devDependencies": {

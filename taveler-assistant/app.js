@@ -65,10 +65,8 @@ app.post('/api/message', function(req, res) {
     if (err) {
       return res.status(err.code || 500).json(err);
     }
-    
-    controller.run(payload.context);
-    controller.printContext(payload);
-    
+    //传递payload和data给controller，调用不同的程序
+    controller.run(payload, data);
     return res.json(updateMessage(payload, data));
   });
 });
@@ -100,8 +98,9 @@ function updateMessage(input, response) {
     } else {
       responseText = 'I did not understand your intent';
     }
+    responseText += '\n';
   }
-  response.output.text = responseText;
+  response.output.text = responseText + response.output.text;
   return response;
 }
 
