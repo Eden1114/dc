@@ -7,6 +7,12 @@
     TODO://
     还需要获得服务器返回的值
  */
+'use strict';
+
+var baidumap = require('./baidumap');
+var interest = require('./interest');
+var weather = require('./weather');
+
 
 function Controller() {
   this.printContext = function (payload) {
