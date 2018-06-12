@@ -6,9 +6,9 @@
  *        origin_region  起始地所在城市
  *        destination_region  目的地所在城市
  * 返回结果：  
- * 		 	百度地图url
+ * 		 	百度地图 url
  * 触发条件：
- *          baidumapAPI为on
+ *          destination != null && origin != null
  * 
  * 
  */
