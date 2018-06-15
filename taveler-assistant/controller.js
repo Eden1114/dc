@@ -11,16 +11,16 @@
 
 var baidumap = require('./baidumap');
 var interest = require('./interest');
-var weather = require('./weather');
+
 
 var baidumapAPI = new baidumap();
 var interestAPI = new interest();
-var weatherAPI = new weather();
+
 
 
 function Controller() {
 
-  this.printContext = function (payload) {
+  this.printContext =  function (payload) {
     console.log(payload.context);
   }
 
@@ -33,10 +33,9 @@ function Controller() {
   
     if(origin != null && destination != null) {
       var url = baidumapAPI.citytocity(origin, destination);
-      var weaherCondition = weatherAPI.getWeatherCondition(destination); 
       response.output.text += '<a target="_blank" href="' + url +'">路线</a>\n';
-      response.output.text += weaherCondition; 
     }
+
   }
 
 }
