@@ -11,29 +11,46 @@
 
 var baidumap = require('./baidumap');
 var interest = require('./interest');
-
+var food = require('./food');
+var hotel = require('./hotel');
 
 var baidumapAPI = new baidumap();
 var interestAPI = new interest();
-
-
+var foodAPI = new food();
+var hotelAPI = new hotel();
 
 function Controller() {
 
   this.printContext =  function (payload) {
-    console.log(payload.context);
+    console.log('--------------');
+    console.log(payload);
+    console.log('--------------');
   }
 
   this.run = function(payload, response) {
+    // for debug
+    this.printContext(payload);
+
+
     if(payload && payload.context) {
       var origin = payload.context.origin;
       var destination = payload.context.destination;
-      
+      var kind = payload.context.kind;
+      var ishotel = payload.context.hotel;
     }
   
     if(origin != null && destination != null) {
       var url = baidumapAPI.citytocity(origin, destination);
       response.output.text += '<a target="_blank" href="' + url +'">路线</a>\n';
+    }
+
+    if(destination != null && kind != null) {
+      response.output.text += '<a target="_blank" href="' + foodAPI.getfood(kind, destination) + '">美食</a>\n';
+    }
+
+    
+    if(ishotel != null && destination != null) {
+      response.output.text += '<a target="_blank" href="' + hotelAPI.gethotel(destination)+ '">住宿</a>\n';
     }
 
   }
