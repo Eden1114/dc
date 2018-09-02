@@ -13,11 +13,14 @@ var baidumap = require('./baidumap');
 var interest = require('./interest');
 var food = require('./food');
 var hotel = require('./hotel');
+var ICBC = require('./ICBCAPI');
+
 
 var baidumapAPI = new baidumap();
 var interestAPI = new interest();
 var foodAPI = new food();
 var hotelAPI = new hotel();
+var icbcAPI = new ICBC();
 
 function Controller() {
 
