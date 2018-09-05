@@ -9,18 +9,17 @@
  */
 'use strict';
 
-var baidumap = require('./baidumap');
-var interest = require('./interest');
-var food = require('./food');
-var hotel = require('./hotel');
-var ICBC = require('./ICBCAPI');
+let baidumap = require('./baidumap');
+let interest = require('./interest');
+let food = require('./food');
+let hotel = require('./hotel');
+let icbc = require('./icbc');
 
-
-var baidumapAPI = new baidumap();
-var interestAPI = new interest();
-var foodAPI = new food();
-var hotelAPI = new hotel();
-var icbcAPI = new ICBC();
+let baidumapAPI = new baidumap();
+let interestAPI = new interest();
+let foodAPI = new food();
+let hotelAPI = new hotel();
+let icbcAPI = new icbc();
 
 function Controller() {
 
@@ -43,8 +42,28 @@ function Controller() {
     }
   
     if(origin != null && destination != null) {
-      var url = baidumapAPI.citytocity(origin, destination);
+      let url = baidumapAPI.citytocity(origin, destination);
       response.output.text += '<a target="_blank" href="' + url +'">路线</a>\n';
+      response.output.text += '如果需要让我帮您买票，请扫下面的二维码：';
+      
+      let r = icbcAPI.QRcodeGenerate(
+        "020002040095", //"mer_id
+        "02000015087", //storeCode
+        "ZHL777O15002039", //outTradeNo
+        "7370", //order_amt
+        "20171210", //trade_date
+        "160346", //trade_time
+        "abcdefg", //attach
+        "1200", // pay_expire
+        "127.0.0.1", // notify_url
+        "127.0.0.1", // tporder_create_ip
+        "0", // sp_flag
+        "1" // notify_flag
+      );
+
+      console.log('---------');
+      console.log(r);
+      console.log('---------');
     }
 
     if(destination != null && kind != null) {
