@@ -14,6 +14,7 @@ let interest = require('./interest');
 let food = require('./food');
 let hotel = require('./hotel');
 let icbc = require('./icbc');
+let qr = require('qr-image');
 
 let baidumapAPI = new baidumap();
 let interestAPI = new interest();
@@ -23,30 +24,30 @@ let icbcAPI = new icbc();
 
 function Controller() {
 
-  this.printContext =  function (payload) {
+  this.printContext = function (payload) {
     console.log('--------------');
     console.log(payload);
     console.log('--------------');
   }
 
-  this.run = function(payload, response) {
+  this.run = function (payload, response) {
     // for debug
     this.printContext(payload);
 
 
-    if(payload && payload.context) {
+    if (payload && payload.context) {
       var origin = payload.context.origin;
       var destination = payload.context.destination;
       var kind = payload.context.kind;
       var ishotel = payload.context.hotel;
     }
-  
-    if(origin != null && destination != null) {
+
+    if (origin != null && destination != null) {
       let url = baidumapAPI.citytocity(origin, destination);
-      response.output.text += '<a target="_blank" href="' + url +'">路线</a>\n';
-      response.output.text += '如果需要让我帮您买票，请扫下面的二维码：';
-      
-      let r = icbcAPI.QRcodeGenerate(
+      response.output.text += '<a target="_blank" href="' + url + '">路线</a>\n';
+      response.output.text += '如果需要让我帮您买票，请点击下面的链接扫描二维码：';
+
+      let r = icbcAPI.QrcodeGenerate(
         "020002040095", //"mer_id
         "02000015087", //storeCode
         "ZHL777O15002039", //outTradeNo
@@ -55,24 +56,34 @@ function Controller() {
         "160346", //trade_time
         "abcdefg", //attach
         "1200", // pay_expire
-        "127.0.0.1", // notify_url
+        null, // notify_url
         "127.0.0.1", // tporder_create_ip
         "0", // sp_flag
         "1" // notify_flag
       );
 
-      console.log('---------');
+      console.log('___' * 20);
       console.log(r);
-      console.log('---------');
+      console.log(r.qrcode);
+      console.log('___' * 20);
+
+      let text = r.qrcode;
+      response.output.text += ('<a target="_blank" href="https://cli.im/api/qrcode/code?text=' + text + '">二维码</a>');
+
+      // let img = qr.image(text, {size: 10});
+      // response.output.text += ('<img src="' + 'https://cli.im/api/qrcode/code?text=' + text +'"></img>');
+
+
+
     }
 
-    if(destination != null && kind != null) {
+    if (destination != null && kind != null) {
       response.output.text += '<a target="_blank" href="' + foodAPI.getfood(kind, destination) + '">美食</a>\n';
     }
 
-    
-    if(ishotel != null && destination != null) {
-      response.output.text += '<a target="_blank" href="' + hotelAPI.gethotel(destination)+ '">住宿</a>\n';
+
+    if (ishotel != null && destination != null) {
+      response.output.text += '<a target="_blank" href="' + hotelAPI.gethotel(destination) + '">住宿</a>\n';
     }
 
   }

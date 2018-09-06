@@ -6,23 +6,23 @@
  */
 
 const java = require('java');
-java.classpath.push('./src');
+java.classpath.push('./java_class');
 
 
 function ICBC_API () {
-    this.QRcodeGenerate = function (merid,storeCode,outTradeNum,orderAmt,
+    this.QrcodeGenerate = function (merid,storeCode,outTradeNum,orderAmt,
         tradeDate,tradeTime,attach,payExpire,notifyUrl,tporderCreateIp,
         spFlag,notifyFlag) {
-        let QrCodeGenerateTest = java.import('com.api.QrcodeGenerateTest');
-        return QrCodeGenerateTest.QRCodeGenerateSync(merid, storeCode, outTradeNum, orderAmt,
+        let QrcodeGenerateTest = java.import('com.api.QrcodeGenerateTest');
+        return JSON.parse(QrcodeGenerateTest.QrcodeGenerateSync(merid, storeCode, outTradeNum, orderAmt,
             tradeDate, tradeTime, attach, payExpire, notifyUrl, tporderCreateIp,
-            spFlag, notifyFlag);
+            spFlag, notifyFlag));
     }
 
     this.QRcodePay = function() {
 
 
-        
+
     }
 
 }

@@ -19,6 +19,7 @@
 var express = require('express'); // app server
 var bodyParser = require('body-parser'); // parser for post requests
 var watson = require('watson-developer-cloud'); // watson sdk
+var qr = require('qr-image');
 
 var Controller = require('./controller');
 var controller = new Controller();
@@ -50,6 +51,7 @@ app.post('/api/message', function(req, res) {
       }
     });
   }
+
 
   var payload = {
     workspace_id: workspace,
