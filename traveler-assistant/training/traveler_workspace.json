@@ -1,0 +1,209 @@
+{
+    "name": "旅行家",
+    "intents":[
+        {
+            "intent": "打招呼",
+            "examples": [
+                {
+                    "text": "你好"
+                },
+                {
+                    "text": "今天天气不错"
+                },
+                {
+                    "text": "早上好"
+                },
+                {
+                    "text": "下午好"
+                },
+                {
+                    "text": "晚上好"
+                },
+                {
+                    "text": "新年好"
+                }
+            ],
+            "description": null
+        },
+        {
+
+            "intent": "无目的",
+            "examples": [
+                {
+                    "text": "随便你"
+                },
+                {
+                    "text": "你说了算"
+                },
+                {
+                    "text": "听你的"
+                },
+                {
+                    "text": "我无所谓"
+                },
+                {
+                    "text": "行"
+                }
+            ],
+            "description": null
+        },
+
+        {
+            "intent":"闲聊",
+            "examples":[
+                {
+                    "text": ""
+                }
+            ],
+            "description": null
+        },
+        {
+            "intent": "出行方式",
+            "examples": [
+                {
+                    "text": "我想去成都"
+                },
+                {
+                    "text": "我要去上海"
+                },
+                {
+                    "text": "可以告诉我怎么去杭州吗？"
+                },
+                {
+                    "text": "我想从北京到合肥"
+                },
+                {
+                    "text": "我想从北京到合肥"
+                },
+                {
+                    "text": "我想出去玩"
+                },
+                {
+                    "text": "我想从北京到合肥"
+                }
+            ],
+            "description": "出行方式"
+        },
+        {
+            "intent": "景点",
+            "examples": [
+                {
+                    "text": ""
+                }
+            ],
+            "description": "目的地包含的景点"
+        },
+        {
+            "intent": "景点信息",
+            "examples": [
+                {
+                    "text": "这地方有什么好玩的？"
+                },
+                {
+                    "text": "这地方有什么景点？"
+                },
+                {
+                    "text": "这地方哪里可以去浪？"
+                },
+                {
+                    "text": "这里有哪些好玩的地方？"
+                }
+            ],
+            "description": "目的地包含的景点"
+        },
+        {
+            "intent": "天气（目的地的天气）",
+            "examples": [
+                {
+                    "text": "那边冷不冷？"
+                },
+                {
+                    "text": "那里热不热？"
+                },
+                {
+                    "text": "那边天气怎么样？"
+                },
+                {
+                    "text": "要带什么衣服去比较好？"
+                },
+                {
+                    "text": "那个地方晒不晒？"
+                },
+                {
+                    "text": "目的地热不热？"
+                },
+                {
+                    "text": "北京热不热？"
+                },
+                {
+                    "text": "上海冷不冷？"
+                },
+                {
+                    "text": "成都多少度？"
+                },
+                {
+                    "text": "西安气温多少？"
+                }
+            ],
+            "description": "目的地的天气状况和穿衣等"
+        },
+        {
+            "intent": "吃什么",
+            "examples": [
+                {
+                    "text": "北京有什么特色小吃吗？"
+                },
+                {
+                    "text": "青岛有什么好吃的？"
+                },
+                {
+                    "text": "鞍山有白菜吗？"
+                },
+                {
+                    "text": "北京有什么特色小吃吗？"
+                }
+            ],
+            "description": "目的地包含的景点"
+        },
+        {
+            "intent": "住哪",
+            "examples": [
+                {
+                    "text": ""
+                }
+            ],
+            "description": "目的地包含的景点"
+        },
+        {
+            "intent": "攻略",
+            "examples": [
+                {
+                    "text": ""
+                }
+            ],
+            "description": "目的地包含的景点"
+        },
+        {
+            "intent": "组团",
+            "examples": [
+                {
+                    "text": ""
+                }
+            ],
+            "description": "目的地包含的景点"
+        },
+        {
+            "intent": "评价行程",
+            "examples": [
+                {
+                    "text": ""
+                }
+            ],
+            "description": "目的地包含的景点"
+        }
+
+    ],
+    "language": "zh-cn",
+    "description": "TODO:",
+    "learning_opt_out": false
+}
